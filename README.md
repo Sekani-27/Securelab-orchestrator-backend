@@ -1,5 +1,3 @@
-# Securelab-orchestrator-backend
-
 # SecureLab – Orchestrator
 
 SecureLab Orchestrator is the core backend service responsible for
