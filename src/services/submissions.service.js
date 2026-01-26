@@ -16,3 +16,15 @@ const createSubmissionService = async ({ repo_url, branch }) => {
 module.exports = {
   createSubmissionService,
 };
+
+const getAllSubmissionsService = async () => {
+  const result = await pool.query(
+    "SELECT * FROM submissions ORDER BY created_at DESC"
+  );
+  return result.rows;
+};
+
+module.exports = {
+  createSubmissionService,
+  getAllSubmissionsService,
+};
