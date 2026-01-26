@@ -8,3 +8,5 @@ const {
 router.post("/", createSubmission);
 
 module.exports = router;
+
+router.patch("/:id/status", updateSubmissionStatus);
