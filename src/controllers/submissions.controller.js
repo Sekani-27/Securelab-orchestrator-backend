@@ -31,3 +31,23 @@ const createSubmission = async (req, res) => {
 module.exports = {
   createSubmission,
 };
+
+const {
+  createSubmissionService,
+  getAllSubmissionsService,
+} = require("../services/submissions.service");
+
+const getAllSubmissions = async (req, res) => {
+  try {
+    const submissions = await getAllSubmissionsService();
+    res.json(submissions);
+  } catch (error) {
+    console.error("Fetch submissions failed:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = {
+  getAllSubmissions,
+};
+
