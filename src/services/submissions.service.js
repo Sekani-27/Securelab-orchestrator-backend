@@ -13,8 +13,24 @@ const createSubmissionService = async ({ repo_url, branch }) => {
   return result.rows[0];
 };
 
+
+const updateSubmissionStatusService = async (id, status) => {
+  const query = `
+    UPDATE submissions
+    SET status = $1
+    WHERE id = $2
+    RETURNING *
+  `;
+
+  const values = [status, id];
+
+  const result = await pool.query(query, values);
+  return result.rows[0];
+};
+
 module.exports = {
   createSubmissionService,
+  updateSubmissionStatusService,
 };
 
 const getAllSubmissionsService = async () => {
